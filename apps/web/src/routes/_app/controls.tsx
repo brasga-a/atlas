@@ -1,13 +1,18 @@
 import { Button } from '#/components/ui/button'
 import { Drawer, DrawerContent, DrawerTrigger } from '#/components/ui/drawer'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 
 import { useState } from 'react'
 
 import { ModeToggle } from '#/components/mode-toggle'
 import { RouteCard } from '#/components/RouteCard'
-import { ArrowUp01FreeIcons } from '@hugeicons/core-free-icons'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '#/components/ui/dropdown-menu'
+import { Menu } from 'lucide-react'
 
 export const mockRoutes = [
   {
@@ -198,6 +203,8 @@ export const Route = createFileRoute('/_app/controls')({
 function RouteComponent() {
   const [hasRoute, setHasRoute] = useState(false)
 
+  const navigate = useNavigate()
+
   return (
     <div className="flex justify-between items-ender p-4">
       {/* <AnimatePresence>
@@ -210,8 +217,8 @@ function RouteComponent() {
         </motion.div>
       </AnimatePresence> */}
       <Drawer>
-        <DrawerTrigger render={<Button variant={'ghost'} />}>
-          <HugeiconsIcon icon={ArrowUp01FreeIcons} />
+        <DrawerTrigger render={<Button variant={'outline'} />}>
+          Open Route Selector
         </DrawerTrigger>
         <DrawerContent className={'mx-2 max-h-[300px] overflow-hidden'}>
           <div className="flex flex-col gap-2 p-2 overflow-y-auto max-h-[300px] scrollbar-none scroll-fade">
@@ -221,7 +228,21 @@ function RouteComponent() {
           </div>
         </DrawerContent>
       </Drawer>
-      <ModeToggle />
+      <div className="flex items-center gap-2">
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            render={<Button variant="outline" size="icon-lg" />}
+          >
+            <Menu />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => navigate({ to: '/' })}>
+              Map
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <ModeToggle />
+      </div>
     </div>
   )
 }
