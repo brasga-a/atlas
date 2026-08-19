@@ -6,7 +6,7 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "vite dev --port 3000 --host",
+    "dev": "vite dev --port 3000",
     "generate-routes": "tsr generate",
     "build": "vite build",
     "preview": "vite preview",
@@ -46,6 +46,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^1.31.0",
     "maplibre-gl": "^6",
+    "motion": "^13.1.0",
     "react": "^19.2.0",
     "react-day-picker": "^10.0.1",
     "react-dom": "^19.2.0",
