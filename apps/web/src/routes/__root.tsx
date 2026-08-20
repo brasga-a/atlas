@@ -1,13 +1,9 @@
-import { TanStackDevtools } from '@tanstack/react-devtools'
 import {
   createRootRouteWithContext,
   HeadContent,
   Outlet,
   Scripts,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
 import { getLocale } from '@/paraglide/runtime'
 
@@ -61,7 +57,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={getLocale()}>
+    <html lang={getLocale()} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -71,9 +67,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <Outlet />
           </TooltipProvider>
         </ThemeProvider>
-        <TanStackDevtools
+        {/* <TanStackDevtools
           config={{
-            position: 'bottom-right',
+            position: 'middle-right',
           }}
           plugins={[
             {
@@ -82,7 +78,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             },
             TanStackQueryDevtools,
           ]}
-        />
+        /> */}
         <Scripts />
       </body>
     </html>

@@ -25,7 +25,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/match-sorter-utils": "latest",
     "@tanstack/react-devtools": "latest",
-    "@tanstack/react-form": "latest",
+    "@tanstack/react-form": "^1.33.5",
     "@tanstack/react-query": "latest",
     "@tanstack/react-query-devtools": "latest",
     "@tanstack/react-router": "latest",
